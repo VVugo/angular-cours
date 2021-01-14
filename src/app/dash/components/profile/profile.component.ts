@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ProfileService} from '../../../core/services/profile.service';
@@ -18,7 +19,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
-    private tagService: TagService
+    private tagService: TagService,
+    private snackBar: MatSnackBar
   ) {
     this.tags$ = this.tagService.get();
   }
@@ -51,6 +53,9 @@ export class ProfileComponent implements OnInit {
   updateProfile(): void {
     const userChanges = this.userForm.getRawValue();
     this.profileService.updateChanges(userChanges).subscribe();
+    this.snackBar.open('Information utilisateur',"Mis à jour avec succès !",{
+      duration:2000
+    });
   }
 
   compareIds(tagOption: TagInterface, tagSelection: TagInterface): boolean {

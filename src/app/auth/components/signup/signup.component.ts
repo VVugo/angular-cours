@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../../../core/services/auth.service';
@@ -15,6 +16,7 @@ export class SignupComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   userForm = this.fb.group({
@@ -32,18 +34,24 @@ export class SignupComponent implements OnInit {
     this.authService.signup(newUser).subscribe(
       () => {
         // inscription réussie !
+        this.snackBar.open('Inscription réussie', 'Votre inscription à bien été enregistré !', {
+          duration: 2000,
+        });
+
         this.authService.signin(newUser.email, newUser.password).subscribe(
           () => {
+
             this.router.navigate(['dash/home']);
           }, () => {
           }
         );
 
       }, (err) => {
-        // afficher ici les erreurs de type duplicata
+        this.snackBar.open('Inscription incorrect', 'Cet utilisateur est déjà inscrit', {
+          duration: 2000,
+        });
       }
     );
 
   }
-
 }

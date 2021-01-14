@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material';
 import { Component } from '@angular/core';
 import {SessionService} from './core/services/session.service';
 import {AuthService} from './core/services/auth.service';
@@ -12,7 +13,8 @@ export class AppComponent {
 
   constructor(
     private sessionService: SessionService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   get isSignedIn(): boolean {
@@ -21,6 +23,9 @@ export class AppComponent {
 
   signout() {
     // supprimer les données de sessions et retourner à la page de login
+    this.snackBar.open('Déconnexion réussi',"A bientôt :)",{
+      duration:2000
+    });
     this.router.navigate(['/auth/signin']).then(() => {
       this.sessionService.clear();
       AuthService.user = null;

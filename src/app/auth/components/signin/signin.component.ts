@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../../../core/services/auth.service';
@@ -15,12 +16,13 @@ export class SigninComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private snackBar: MatSnackBar
   ) {
   }
 
   userForm = this.fb.group({
-    email: ['adrien.brest@epsi.fr', [Validators.required, Validators.email]],
-    password: ['root', [Validators.required, Validators.minLength(6)]],
+    email: ['samuel@wecolearn.com', [Validators.required, Validators.email]],
+    password: ['admin1234', [Validators.required, Validators.minLength(6)]],
   });
 
   ngOnInit() {
@@ -51,15 +53,9 @@ export class SigninComponent implements OnInit {
       },
       (err) => {
         // on peut dire à l'utilisateur qu'il n'a pas donné les bons identifiants
-        console.log({ err });
+        this.snackBar.open('Connexion refusé','Identifiant incorrect',{
+          duration:2000
+        });
       });
   }
-
-
-
-
-
-
-
-
 }
