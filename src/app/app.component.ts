@@ -26,7 +26,7 @@ export class AppComponent {
     this.snackBar.open('Déconnexion réussi',"A bientôt :)",{
       duration:2000
     });
-    this.router.navigate(['/auth/signin']).then(() => {
+    this.router.navigate(['/auth/landingpage']).then(() => {
       this.sessionService.clear();
       AuthService.user = null;
     });

@@ -15,8 +15,9 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'auth/signin'
+    redirectTo: 'auth/landingpage'
   }
+
 ];
 
 @NgModule({
