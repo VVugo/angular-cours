@@ -13,7 +13,8 @@ const routes: Routes = [
   },
   {
     path: 'landingpage', component: LandingpageComponent,
-  }
+  },
+
 ];
 
 @NgModule({

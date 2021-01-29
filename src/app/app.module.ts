@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CoreModule} from './core/core.module';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {ApiInterceptor} from './core/api.interceptor';
-import {MatButtonModule, MatIconModule, MatMenuModule,MatSnackBarModule} from '@angular/material';
+import {MatButtonModule, MatIconModule, MatMenuModule,MatSnackBarModule,MatTableModule,MatPaginatorModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -22,6 +22,8 @@ import {MatButtonModule, MatIconModule, MatMenuModule,MatSnackBarModule} from '@
     MatMenuModule,
     MatIconModule,
     MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     {

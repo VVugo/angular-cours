@@ -20,7 +20,7 @@ import {UserPartsModule} from '../shared/user-parts/user-parts.module';
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
   ]
 })
 export class DashModule { }

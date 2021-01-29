@@ -1,0 +1,28 @@
+<div class="center">
+    <h1>Bienvenue sur la page administrateur</h1>
+    <br/>
+    <!-- <mat-form-field>
+        <mat-label>Filtre</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex : Angular" #input>
+    </mat-form-field> -->
+    <div class="monTableau">
+        <table mat-table [dataSource]="tags" class="mat-elevation-z8 mat-table" matSort matSortActive="iteration" matSortDisableClear matSortDirection="desc">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Nom </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="iteration">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Popularité </th>
+                <td mat-cell *matCellDef="let element"> {{element.iteration}} </td>
+            </ng-container>
+            <ng-container matColumnDef="created">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Date de création </th>
+                <td mat-cell *matCellDef="let element"> {{element.created | date:"short"}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnHeader"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnHeader;"></tr>
+        </table>
+    </div>
+    <mat-paginator [length]="longueur" [pageSize]="5" showFirstLastButtons></mat-paginator>
+</div>

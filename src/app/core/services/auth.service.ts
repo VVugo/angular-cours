@@ -23,6 +23,16 @@ export class AuthService {
     return AuthService.user !== null;
   }
 
+  // Vérification si l'utilisateur est administrateur
+  static get isAdmin(): boolean{
+    if(!this.user.roles.includes('ROLE_ADMIN')){
+        return true;
+      }
+      else{
+        return null;
+      }
+  }
+
   signin(email: string, password: string): Observable<any> {
     return this.httpClient.post(
       `${environment.api}/api/login_check`,

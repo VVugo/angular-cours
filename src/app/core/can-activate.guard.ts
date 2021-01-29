@@ -47,13 +47,13 @@ export class CanActivateGuard implements CanActivate {
         }
         // on vérifie que l'utilisateur est admin dans le cas où la router est dédiés à des admins
         else if ( 'roles' in response) {
-          if(!response.roles.includes('ROLE_ADMIN') && ('admin' in next.data)){
-            this.router.navigate(['auth/signin']);
-            this.snackBar.open('Connexion refusé',"Vous n'êtes pas administrateur",{
-              duration:2000
-            });
-            return false;
-          }
+          // if(!response.roles.includes('ROLE_ADMIN') && ('admin' in next.data)){
+          //   this.router.navigate(['auth/signin']);
+          //   this.snackBar.open('Connexion refusé',"Vous n'êtes pas administrateur",{
+          //     duration:2000
+          //   });
+          //   return false;
+          // }
           this.snackBar.open('Connexion réussi',"Bienvenue !",{
             duration:2000
           });
